@@ -1,4 +1,5 @@
-
+# Microserivicio Autenticación
+Estudiante : Betty Rodriguez
 ## Ejecutar el Proyecto
 
 ### Requisitos Previos
@@ -89,7 +90,7 @@ php artisan queue:listen
    npm run build
    ```
 
-3. **Configurar el servidor web** (Apache/Nginx) apuntando a la carpeta `public`
+
 
 ### Comandos Útiles
 
@@ -99,23 +100,10 @@ php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 
-# Ejecutar tests
-composer run test
-# o
-php artisan test
-
-# Ver logs
-php artisan log:tail
-
-# Reiniciar queue
-php artisan queue:restart
 ```
 
 ## 🚀 Rutas del Proyecto
 
-### Rutas Web
-- `GET /` - Página de bienvenida
-- `GET /react` - Aplicación React
 
 ### Rutas API - Autenticación
 **Base:** `/api/auth`
