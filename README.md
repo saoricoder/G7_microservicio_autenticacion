@@ -85,8 +85,6 @@ php artisan view:clear
 
 ```
 
-## Rutas del Proyecto
-
 
 ### Rutas API - Autenticación
 **Base:** `/api/auth`
