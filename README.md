@@ -73,23 +73,6 @@ npm run dev
 php artisan queue:listen
 ```
 
-### Ejecutar en Producción
-
-1. **Configurar variables de entorno**
-   ```bash
-   # En .env
-   APP_ENV=production
-   APP_DEBUG=false
-   ```
-
-2. **Optimizar la aplicación**
-   ```bash
-   php artisan config:cache
-   php artisan route:cache
-   php artisan view:cache
-   npm run build
-   ```
-
 
 
 ### Comandos Útiles
@@ -102,7 +85,7 @@ php artisan view:clear
 
 ```
 
-## 🚀 Rutas del Proyecto
+## Rutas del Proyecto
 
 
 ### Rutas API - Autenticación
