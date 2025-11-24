@@ -64,7 +64,7 @@ Este comando ejecutará simultáneamente:
 **Opción 2: Ejecutar servidores por separado**
 ```bash
 # Terminal 1 - Servidor de Laravel
-php artisan serve --host=127.0.0.1 --port=8001
+php artisan serve
 
 # Terminal 2 - Vite dev server
 npm run dev
