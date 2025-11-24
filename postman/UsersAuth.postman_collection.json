@@ -13,13 +13,13 @@
           {"key": "Content-Type", "value": "application/json"}
         ],
         "url": {
-          "raw": "{{base_url}}/api/auth/register",
+          "raw": "{{base_url}}/api/register",
           "host": ["{{base_url}}"],
-          "path": ["api", "auth", "register"]
+          "path": ["api", "register"]
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"{{name}}\",\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\",\n  \"role\": \"{{role}}\"\n}"
+          "raw": "{\n  \"name\": \"{{name}}\",\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
         }
       },
       "event": [
@@ -62,9 +62,9 @@
           {"key": "Content-Type", "value": "application/json"}
         ],
         "url": {
-          "raw": "{{base_url}}/api/auth/login",
+          "raw": "{{base_url}}/api/login",
           "host": ["{{base_url}}"],
-          "path": ["api", "auth", "login"]
+          "path": ["api", "login"]
         },
         "body": {
           "mode": "raw",
@@ -78,7 +78,7 @@
             "exec": [
               "// Verificar que el login sea exitoso",
               "pm.test(\"Login exitoso\", function () {",
-              "    pm.response.to.have.status(200);",
+              "    pm.response.to.have.status(201);",
               "});",
               "",
               "// Verificar estructura de respuesta",
@@ -87,7 +87,7 @@
               "    pm.expect(jsonData).to.have.property('message');",
               "    pm.expect(jsonData).to.have.property('token');",
               "    pm.expect(jsonData).to.have.property('user');",
-              "    pm.expect(jsonData.message).to.eql('Login exitoso');",
+              "    pm.expect(jsonData.message).to.eql('Usuario conectado exitosamente');",
               "});",
               "",
               "// Guardar el token actualizado",
@@ -103,16 +103,16 @@
       ]
     },
     {
-      "name": "03. Información del Usuario (Me)",
+      "name": "03. Validar Token (protected)",
       "request": {
         "method": "GET",
         "header": [
           {"key": "Authorization", "value": "Bearer {{token}}"}
         ],
         "url": {
-          "raw": "{{base_url}}/api/auth/me",
+          "raw": "{{base_url}}/api/validate-token",
           "host": ["{{base_url}}"],
-          "path": ["api", "auth", "me"]
+          "path": ["api", "validate-token"]
         }
       },
       "event": [
@@ -146,47 +146,7 @@
       ]
     },
     {
-      "name": "04. Datos Básicos del Usuario",
-      "request": {
-        "method": "GET",
-        "header": [
-          {"key": "Authorization", "value": "Bearer {{token}}"}
-        ],
-        "url": {
-          "raw": "{{base_url}}/api/auth/user",
-          "host": ["{{base_url}}"],
-          "path": ["api", "auth", "user"]
-        }
-      },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              "// Verificar acceso a datos básicos",
-              "pm.test(\"Datos básicos accesibles\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "// Verificar estructura mínima",
-              "pm.test(\"Estructura de datos básicos correcta\", function () {",
-              "    var jsonData = pm.response.json();",
-              "    pm.expect(jsonData).to.have.property('id');",
-              "    pm.expect(jsonData).to.have.property('name');",
-              "    pm.expect(jsonData).to.have.property('email');",
-              "    pm.expect(jsonData).to.have.property('role');",
-              "});",
-              "",
-              "var jsonData = pm.response.json();",
-              "console.log('Datos básicos - ID:', jsonData.id, 'Rol:', jsonData.role);"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ]
-    },
-    {
-      "name": "05. Logout",
+      "name": "04. Logout",
       "request": {
         "method": "POST",
         "header": [
@@ -194,9 +154,9 @@
           {"key": "Content-Type", "value": "application/json"}
         ],
         "url": {
-          "raw": "{{base_url}}/api/auth/logout",
+          "raw": "{{base_url}}/api/logout",
           "host": ["{{base_url}}"],
-          "path": ["api", "auth", "logout"]
+          "path": ["api", "logout"]
         }
       },
       "event": [
